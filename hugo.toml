@@ -1,0 +1,45 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'Awesome Hugo Blog'
+theme = 'awesome-custom'
+
+# Enable dark/light mode
+[params]
+  # Color theme: auto, dark, light
+  defaultTheme = "auto"
+  # Show post reading time
+  showReadingTime = true
+  # Show table of contents
+  showToc = true
+  # Show post navigation
+  showPostNavigation = true
+  # Site description
+  description = "A minimalistic Hugo theme with light and dark mode support"
+  # Your avatar URL
+  avatar = "https://github.com/identicons/yourusername.png"
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "Posts"
+    url = "/posts/"
+    weight = 2
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 3
+
+[markup]
+  [markup.highlight]
+    style = "dracula"
+    lineNos = true
+  [markup.goldmark.renderer]
+    unsafe = true
+
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 2

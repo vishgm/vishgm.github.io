@@ -1,0 +1,11 @@
+name = "Awesome Custom"
+license = "MIT"
+description = "A minimalistic Hugo theme with light and dark mode support"
+homepage = "https://github.com/yourusername/awesome-custom"
+tags = ["blog", "responsive", "minimal", "dark", "light", "multilingual"]
+features = ["blog", "dark mode", "responsive"]
+min_version = "0.87.0"
+
+[author]
+    name = "Your Name"
+    homepage = "https://example.com" 
