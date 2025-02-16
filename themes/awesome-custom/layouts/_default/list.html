@@ -7,16 +7,27 @@
         {{ end }}
     </header>
 
+    {{ $sections := slice "ml" "system-design" "current-reads" "posts" }}
+    {{ $allPosts := slice }}
+    {{ range $sections }}
+        {{ $section := . }}
+        {{ $posts := where $.Site.RegularPages "Section" $section }}
+        {{ $allPosts = $allPosts | append $posts }}
+    {{ end }}
+    
+    {{ $paginator := .Paginate $allPosts.ByDate.Reverse }}
+    
     <div class="posts-list">
-        {{ range .Pages.ByDate.Reverse }}
+        {{ range $paginator.Pages }}
         <article class="post-item">
+            <div class="post-category">{{ .Section | title }}</div>
             <h2 class="post-title">
                 <a href="{{ .RelPermalink }}">{{ .Title }}</a>
             </h2>
             <div class="post-meta">
                 <time>{{ .Date.Format "Jan 2, 2006" }}</time>
-                {{ if .Site.Params.showReadingTime }}
-                <span class="reading-time">{{ .ReadingTime }} min read</span>
+                {{ if .Params.readingTime }}
+                • {{ .Params.readingTime }} min read
                 {{ end }}
             </div>
             {{ with .Description }}
@@ -24,6 +35,32 @@
             {{ end }}
         </article>
         {{ end }}
+    </div>
+
+    {{ if gt $paginator.TotalPages 1 }}
+    <div class="pagination">
+        {{ if $paginator.HasPrev }}
+        <a href="{{ $paginator.Prev.URL }}" class="prev">← Previous</a>
+        {{ end }}
+        {{ if $paginator.HasNext }}
+        <a href="{{ $paginator.Next.URL }}" class="next">Next →</a>
+        {{ end }}
+    </div>
+    {{ end }}
+
+    <div class="categories-list">
+        <h2>Browse by Category</h2>
+        <div class="category-grid">
+            {{ range $sections }}
+            {{ $section := . }}
+            {{ with $.Site.GetPage $section }}
+            <a href="{{ .RelPermalink }}" class="category-card">
+                <h3>{{ .Title }}</h3>
+                <p>{{ .Description }}</p>
+            </a>
+            {{ end }}
+            {{ end }}
+        </div>
     </div>
 </div>
 {{ end }} 

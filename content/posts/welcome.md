@@ -1,6 +1,6 @@
 ---
 title: "Welcome to My Awesome Blog"
-date: 2024-02-15
+date: 2025-02-15
 description: "This is my first post on my new Hugo blog with a custom theme."
 ---
 

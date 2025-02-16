@@ -1,6 +1,6 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
-title = 'Awesome Hugo Blog'
+title = 'Vishak Gopkumar'
 theme = 'awesome-custom'
 
 # Enable dark/light mode
@@ -14,9 +14,11 @@ theme = 'awesome-custom'
   # Show post navigation
   showPostNavigation = true
   # Site description
-  description = "A minimalistic Hugo theme with light and dark mode support"
+  description = "to my second brain ;)"
   # Your avatar URL
-  avatar = "https://github.com/identicons/yourusername.png"
+  avatar = "https://github.com/vishgm.png"
+  # Main sections to include in lists
+  mainSections = ["posts", "ml", "system-design", "current-reads"]
 
 [menu]
   [[menu.main]]
