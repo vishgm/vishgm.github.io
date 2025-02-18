@@ -18,7 +18,7 @@ theme = 'awesome-custom'
   # Your avatar URL
   avatar = "https://github.com/vishgm.png"
   # Main sections to include in lists
-  mainSections = ["posts", "ml", "system-design", "current-reads"]
+  mainSections = ["posts", "ml", "system-design", "current-reads", "projects"]
 
 [menu]
   [[menu.main]]
@@ -30,9 +30,13 @@ theme = 'awesome-custom'
     url = "/posts/"
     weight = 2
   [[menu.main]]
+    name = "Projects"
+    url = "/projects/"
+    weight = 3
+  [[menu.main]]
     name = "About"
     url = "/about/"
-    weight = 3
+    weight = 4
 
 [markup]
   [markup.highlight]

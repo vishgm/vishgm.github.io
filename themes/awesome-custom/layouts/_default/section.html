@@ -13,18 +13,18 @@
     <div class="category-posts">
         {{ range $paginator.Pages }}
         <article class="category-post">
-            <h3 class="post-title">
-                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-            </h3>
-            <div class="post-meta">
-                <time>{{ .Date.Format "Jan 2, 2006" }}</time>
-                {{ if .Params.readingTime }}
-                • {{ .Params.readingTime }} min read
+            <a href="{{ .RelPermalink }}" class="post-link">
+                <h3 class="post-title">{{ .Title }}</h3>
+                <div class="post-meta">
+                    <time>{{ .Date.Format "Jan 2, 2006" }}</time>
+                    {{ if .Params.readingTime }}
+                    • {{ .Params.readingTime }} min read
+                    {{ end }}
+                </div>
+                {{ with .Description }}
+                <p class="post-description">{{ . }}</p>
                 {{ end }}
-            </div>
-            {{ with .Description }}
-            <p class="post-description">{{ . }}</p>
-            {{ end }}
+            </a>
         </article>
         {{ end }}
     </div>

@@ -16,18 +16,18 @@
         <ul class="post-list">
             {{ range $recentPosts }}
             <li class="post-item">
-                {{ with .Site.GetPage .Section }}
-                <div class="post-category">{{ .Title }}</div>
-                {{ end }}
-                <h3 class="post-title">
-                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                </h3>
-                <div class="post-meta">
-                    <time>{{ .Date.Format "Jan 2, 2006" }}</time>
-                    {{ if .Params.readingTime }}
-                    • {{ .Params.readingTime }} min read
+                <a href="{{ .RelPermalink }}" class="post-link">
+                    {{ with .Site.GetPage .Section }}
+                    <div class="post-category">{{ .Title }}</div>
                     {{ end }}
-                </div>
+                    <h3 class="post-title">{{ .Title }}</h3>
+                    <div class="post-meta">
+                        <time>{{ .Date.Format "Jan 2, 2006" }}</time>
+                        {{ if .Params.readingTime }}
+                        • {{ .Params.readingTime }} min read
+                        {{ end }}
+                    </div>
+                </a>
             </li>
             {{ end }}
         </ul>

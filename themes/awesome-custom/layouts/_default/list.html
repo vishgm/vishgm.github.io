@@ -7,7 +7,7 @@
         {{ end }}
     </header>
 
-    {{ $sections := slice "ml" "system-design" "current-reads" "posts" }}
+    {{ $sections := slice "ml" "system-design" "current-reads" "posts" "projects" }}
     {{ $allPosts := slice }}
     {{ range $sections }}
         {{ $section := . }}
@@ -20,7 +20,9 @@
     <div class="posts-list">
         {{ range $paginator.Pages }}
         <article class="post-item">
-            <div class="post-category">{{ .Section | title }}</div>
+            {{ with .Site.GetPage .Section }}
+            <div class="post-category">{{ .Title }}</div>
+            {{ end }}
             <h2 class="post-title">
                 <a href="{{ .RelPermalink }}">{{ .Title }}</a>
             </h2>
@@ -54,8 +56,12 @@
             {{ range $sections }}
             {{ $section := . }}
             {{ with $.Site.GetPage $section }}
+            {{ $postCount := len .RegularPages }}
             <a href="{{ .RelPermalink }}" class="category-card">
-                <h3>{{ .Title }}</h3>
+                <div class="category-card-header">
+                    <h3>{{ .Title }}</h3>
+                    <div class="post-count">{{ $postCount }} {{ if eq $postCount 1 }}post{{ else }}posts{{ end }}</div>
+                </div>
                 <p>{{ .Description }}</p>
             </a>
             {{ end }}

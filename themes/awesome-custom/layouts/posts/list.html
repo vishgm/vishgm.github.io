@@ -23,24 +23,28 @@
         <section class="category-section">
             <div class="category-header">
                 <h2>{{ .Title }}</h2>
-                <a href="{{ .RelPermalink }}" class="view-all-link">View All →</a>
+                <div class="category-meta">
+                    {{ $postCount := len .RegularPages }}
+                    <span class="post-count">{{ $postCount }} {{ if eq $postCount 1 }}post{{ else }}posts{{ end }}</span>
+                    <a href="{{ .RelPermalink }}" class="view-all-link">View All →</a>
+                </div>
             </div>
             <p class="category-description">{{ .Description }}</p>
             <div class="category-posts">
-                {{ range first 4 .Pages }}
+                {{ range first 2 .Pages }}
                 <article class="category-post">
-                    <h3 class="post-title">
-                        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                    </h3>
-                    <div class="post-meta">
-                        <time>{{ .Date.Format "Jan 2, 2006" }}</time>
-                        {{ if .Params.readingTime }}
-                        • {{ .Params.readingTime }} min read
+                    <a href="{{ .RelPermalink }}" class="post-link">
+                        <h3 class="post-title">{{ .Title }}</h3>
+                        <div class="post-meta">
+                            <time>{{ .Date.Format "Jan 2, 2006" }}</time>
+                            {{ if .Params.readingTime }}
+                            • {{ .Params.readingTime }} min read
+                            {{ end }}
+                        </div>
+                        {{ with .Description }}
+                        <p class="post-description">{{ . }}</p>
                         {{ end }}
-                    </div>
-                    {{ with .Description }}
-                    <p class="post-description">{{ . }}</p>
-                    {{ end }}
+                    </a>
                 </article>
                 {{ end }}
             </div>
@@ -52,24 +56,28 @@
         <section class="category-section">
             <div class="category-header">
                 <h2>{{ .Title }}</h2>
-                <a href="{{ .RelPermalink }}" class="view-all-link">View All →</a>
+                <div class="category-meta">
+                    {{ $postCount := len .RegularPages }}
+                    <span class="post-count">{{ $postCount }} {{ if eq $postCount 1 }}post{{ else }}posts{{ end }}</span>
+                    <a href="{{ .RelPermalink }}" class="view-all-link">View All →</a>
+                </div>
             </div>
             <p class="category-description">{{ .Description }}</p>
             <div class="category-posts">
-                {{ range first 4 .Pages }}
+                {{ range first 2 .Pages }}
                 <article class="category-post">
-                    <h3 class="post-title">
-                        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                    </h3>
-                    <div class="post-meta">
-                        <time>{{ .Date.Format "Jan 2, 2006" }}</time>
-                        {{ if .Params.readingTime }}
-                        • {{ .Params.readingTime }} min read
+                    <a href="{{ .RelPermalink }}" class="post-link">
+                        <h3 class="post-title">{{ .Title }}</h3>
+                        <div class="post-meta">
+                            <time>{{ .Date.Format "Jan 2, 2006" }}</time>
+                            {{ if .Params.readingTime }}
+                            • {{ .Params.readingTime }} min read
+                            {{ end }}
+                        </div>
+                        {{ with .Description }}
+                        <p class="post-description">{{ . }}</p>
                         {{ end }}
-                    </div>
-                    {{ with .Description }}
-                    <p class="post-description">{{ . }}</p>
-                    {{ end }}
+                    </a>
                 </article>
                 {{ end }}
             </div>
@@ -81,24 +89,28 @@
         <section class="category-section">
             <div class="category-header">
                 <h2>{{ .Title }}</h2>
-                <a href="{{ .RelPermalink }}" class="view-all-link">View All →</a>
+                <div class="category-meta">
+                    {{ $postCount := len .RegularPages }}
+                    <span class="post-count">{{ $postCount }} {{ if eq $postCount 1 }}post{{ else }}posts{{ end }}</span>
+                    <a href="{{ .RelPermalink }}" class="view-all-link">View All →</a>
+                </div>
             </div>
             <p class="category-description">{{ .Description }}</p>
             <div class="category-posts">
-                {{ range first 4 .Pages }}
+                {{ range first 2 .Pages }}
                 <article class="category-post">
-                    <h3 class="post-title">
-                        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                    </h3>
-                    <div class="post-meta">
-                        <time>{{ .Date.Format "Jan 2, 2006" }}</time>
-                        {{ if .Params.readingTime }}
-                        • {{ .Params.readingTime }} min read
+                    <a href="{{ .RelPermalink }}" class="post-link">
+                        <h3 class="post-title">{{ .Title }}</h3>
+                        <div class="post-meta">
+                            <time>{{ .Date.Format "Jan 2, 2006" }}</time>
+                            {{ if .Params.readingTime }}
+                            • {{ .Params.readingTime }} min read
+                            {{ end }}
+                        </div>
+                        {{ with .Description }}
+                        <p class="post-description">{{ . }}</p>
                         {{ end }}
-                    </div>
-                    {{ with .Description }}
-                    <p class="post-description">{{ . }}</p>
-                    {{ end }}
+                    </a>
                 </article>
                 {{ end }}
             </div>

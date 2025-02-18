@@ -1,4 +1,17 @@
 {{ define "main" }}
+<div class="post-navigation-top">
+    <div class="breadcrumbs">
+        <a href="/">Home</a>
+        {{ if .Section }}
+        <span class="separator">/</span>
+        <a href="/{{ .Section }}">{{ humanize .Section }}</a>
+        {{ end }}
+        <span class="separator">/</span>
+        <span class="current">{{ .Title }}</span>
+    </div>
+    <a href="/posts" class="back-to-posts">← Back to all posts</a>
+</div>
+
 <article class="post">
     <header class="post-header">
         <h1 class="post-title">{{ .Title }}</h1>

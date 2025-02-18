@@ -11,6 +11,24 @@
     <loc>http://localhost:1313/posts/welcome/</loc>
     <lastmod>2025-02-15T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/tags/deep-learning/</loc>
+    <lastmod>2024-03-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ml/</loc>
+    <lastmod>2024-03-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/nlp/</loc>
+    <lastmod>2024-03-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2024-03-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/transformers/</loc>
+    <lastmod>2024-03-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ml/understanding-transformers/</loc>
+    <lastmod>2024-03-20T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/about/</loc>
     <lastmod>2024-02-15T00:00:00+00:00</lastmod>
   </url><url>
@@ -23,9 +41,6 @@
     <loc>http://localhost:1313/system-design/intro-system-design/</loc>
     <lastmod>2024-02-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/ml/</loc>
-    <lastmod>2024-02-15T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/current-reads/current-reading-list/</loc>
     <lastmod>2024-02-15T00:00:00+00:00</lastmod>
   </url><url>
@@ -34,6 +49,6 @@
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>http://localhost:1313/statistics/</loc>
   </url>
 </urlset>
