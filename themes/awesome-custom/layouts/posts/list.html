@@ -18,20 +18,22 @@
     </div>
 
     <div class="category-sections">
-        <!-- ML Section -->
-        {{ with .Site.GetPage "section" "ml" }}
+        {{ $sections := slice "ml" "system-design" "current-reads" }}
+        {{ range $sections }}
+        {{ $section := $.Site.GetPage (printf "/%s" .) }}
+        {{ if $section }}
         <section class="category-section">
             <div class="category-header">
-                <h2>{{ .Title }}</h2>
+                <h2>{{ $section.Title }}</h2>
                 <div class="category-meta">
-                    {{ $postCount := len .RegularPages }}
+                    {{ $postCount := len $section.RegularPages }}
                     <span class="post-count">{{ $postCount }} {{ if eq $postCount 1 }}post{{ else }}posts{{ end }}</span>
-                    <a href="{{ .RelPermalink }}" class="view-all-link">View All →</a>
+                    <a href="{{ $section.RelPermalink }}" class="view-all-link">View All →</a>
                 </div>
             </div>
-            <p class="category-description">{{ .Description }}</p>
+            <p class="category-description">{{ $section.Description }}</p>
             <div class="category-posts">
-                {{ range first 2 .Pages }}
+                {{ range first 2 $section.Pages }}
                 <article class="category-post">
                     <a href="{{ .RelPermalink }}" class="post-link">
                         <h3 class="post-title">{{ .Title }}</h3>
@@ -50,71 +52,6 @@
             </div>
         </section>
         {{ end }}
-
-        <!-- System Design Section -->
-        {{ with .Site.GetPage "section" "system-design" }}
-        <section class="category-section">
-            <div class="category-header">
-                <h2>{{ .Title }}</h2>
-                <div class="category-meta">
-                    {{ $postCount := len .RegularPages }}
-                    <span class="post-count">{{ $postCount }} {{ if eq $postCount 1 }}post{{ else }}posts{{ end }}</span>
-                    <a href="{{ .RelPermalink }}" class="view-all-link">View All →</a>
-                </div>
-            </div>
-            <p class="category-description">{{ .Description }}</p>
-            <div class="category-posts">
-                {{ range first 2 .Pages }}
-                <article class="category-post">
-                    <a href="{{ .RelPermalink }}" class="post-link">
-                        <h3 class="post-title">{{ .Title }}</h3>
-                        <div class="post-meta">
-                            <time>{{ .Date.Format "Jan 2, 2006" }}</time>
-                            {{ if .Params.readingTime }}
-                            • {{ .Params.readingTime }} min read
-                            {{ end }}
-                        </div>
-                        {{ with .Description }}
-                        <p class="post-description">{{ . }}</p>
-                        {{ end }}
-                    </a>
-                </article>
-                {{ end }}
-            </div>
-        </section>
-        {{ end }}
-
-        <!-- Current Reads Section -->
-        {{ with .Site.GetPage "section" "current-reads" }}
-        <section class="category-section">
-            <div class="category-header">
-                <h2>{{ .Title }}</h2>
-                <div class="category-meta">
-                    {{ $postCount := len .RegularPages }}
-                    <span class="post-count">{{ $postCount }} {{ if eq $postCount 1 }}post{{ else }}posts{{ end }}</span>
-                    <a href="{{ .RelPermalink }}" class="view-all-link">View All →</a>
-                </div>
-            </div>
-            <p class="category-description">{{ .Description }}</p>
-            <div class="category-posts">
-                {{ range first 2 .Pages }}
-                <article class="category-post">
-                    <a href="{{ .RelPermalink }}" class="post-link">
-                        <h3 class="post-title">{{ .Title }}</h3>
-                        <div class="post-meta">
-                            <time>{{ .Date.Format "Jan 2, 2006" }}</time>
-                            {{ if .Params.readingTime }}
-                            • {{ .Params.readingTime }} min read
-                            {{ end }}
-                        </div>
-                        {{ with .Description }}
-                        <p class="post-description">{{ . }}</p>
-                        {{ end }}
-                    </a>
-                </article>
-                {{ end }}
-            </div>
-        </section>
         {{ end }}
     </div>
 </div>

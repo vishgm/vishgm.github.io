@@ -9,6 +9,7 @@
     <link rel="icon" type="image/png" href="{{ .Site.Params.avatar }}" sizes="32x32">
     <link rel="icon" type="image/png" href="{{ .Site.Params.avatar }}" sizes="16x16">
     <link rel="apple-touch-icon" href="{{ .Site.Params.avatar }}">
+    <link rel="shortcut icon" href="{{ .Site.Params.avatar }}" type="image/x-icon">
     
     <!-- Montserrat font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     {{ $options := (dict "targetPath" "css/main.css" "outputStyle" "compressed" "enableSourceMap" true) }}
-    {{ $style := resources.Get "scss/main.scss" | resources.ToCSS $options | resources.Fingerprint "sha512" }}
+    {{ $style := resources.Get "scss/main.scss" | css.Sass $options | resources.Fingerprint "sha512" }}
     <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">
     
     <!-- KaTeX support -->

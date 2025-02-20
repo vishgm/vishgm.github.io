@@ -20,8 +20,8 @@ In my professional career, I work as a Data Scientist in the FinTech space.
 Here's a summary of my work experience:
 
 <div class="theme-aware-image">
-    <img src="/assets/about-venn.svg" alt="About me - Work Experience Venn Diagram" class="light-mode-image">
-    <img src="/assets/about-venn-dark.svg" alt="About me - Work Experience Venn Diagram" class="dark-mode-image">
+    <object data="/assets/about-venn.svg" type="image/svg+xml" class="light-mode-svg"></object>
+    <object data="/assets/about-venn-dark.svg" type="image/svg+xml" class="dark-mode-svg"></object>
 </div>
 
 ## Contact
