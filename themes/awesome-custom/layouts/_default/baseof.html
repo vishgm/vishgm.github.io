@@ -10,7 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    {{ $style := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "main.scss" . | css.Sass | resources.Minify }}
+    {{ $sass := resources.Get "scss/main.scss" }}
+    {{ $style := $sass | resources.ToCSS (dict "targetPath" "css/main.css" "outputStyle" "compressed") }}
     <link rel="stylesheet" href="{{ $style.RelPermalink }}">
     
     <!-- KaTeX support -->
