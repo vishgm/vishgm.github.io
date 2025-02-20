@@ -5,13 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ .Site.Params.avatar }}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{ .Site.Params.avatar }}" sizes="16x16">
+    <link rel="apple-touch-icon" href="{{ .Site.Params.avatar }}">
+    
     <!-- Montserrat font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     {{ $sass := resources.Get "scss/main.scss" }}
-    {{ $style := $sass | resources.ToCSS (dict "targetPath" "css/main.css" "outputStyle" "compressed") }}
+    {{ $style := $sass | css.Sass (dict "targetPath" "css/main.css" "outputStyle" "compressed") }}
     <link rel="stylesheet" href="{{ $style.RelPermalink }}">
     
     <!-- KaTeX support -->

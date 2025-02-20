@@ -1,7 +1,7 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="{{ .Site.BaseURL }}" class="logo-link">
+            <a href="{{ .Site.BaseURL }}" class="logo-link" aria-label="Home">
                 {{ if .Site.Params.avatar }}
                 <img src="{{ .Site.Params.avatar }}" alt="{{ .Site.Title }}" class="nav-avatar">
                 {{ end }}

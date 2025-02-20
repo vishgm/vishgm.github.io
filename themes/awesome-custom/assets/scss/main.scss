@@ -98,26 +98,26 @@ body {
             align-items: center;
             text-decoration: none;
             color: var(--text-color);
+            gap: 1rem;
             
             .nav-avatar {
-                width: 32px;
-                height: 32px;
+                width: 40px;
+                height: 40px;
                 border-radius: 50%;
-                margin-right: 0.75rem;
                 object-fit: cover;
-                border: 2px solid var(--link-color);
-                box-shadow: 0 0 0 2px var(--bg-color);
                 transition: all 0.2s ease;
+                border: 2px solid var(--border-color);
                 
                 &:hover {
-                    transform: scale(1.05);
-                    border-color: var(--hover-color);
+                    transform: scale(1.1);
+                    border-color: var(--link-color);
                 }
             }
             
             .nav-title {
                 font-size: 1.25rem;
                 font-weight: 600;
+                color: var(--text-color);
             }
         }
     }
@@ -1360,4 +1360,58 @@ a, button, input,
     &:hover {
         transition-duration: 0.2s;
     }
+}
+
+// Theme-aware images
+.theme-aware-image {
+    position: relative;
+    display: block;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+
+    img {
+        max-width: 100%;
+        height: auto;
+        margin: 0;
+        display: block;
+    }
+
+    .dark-mode-image {
+        display: none;
+    }
+}
+
+[data-theme="dark"] {
+    .theme-aware-image {
+        .light-mode-image {
+            display: none;
+        }
+        .dark-mode-image {
+            display: block;
+        }
+    }
+}
+
+// SVG theme support
+.theme-svg {
+    max-width: 100%;
+    height: auto;
+    margin: 1.5rem 0;
+    display: block;
+    
+    path, text, line, circle {
+        stroke: var(--text-color);
+    }
+    
+    text {
+        fill: var(--text-color);
+    }
+}
+
+// Favicon styles
+link[rel="icon"],
+link[rel="apple-touch-icon"] {
+    border-radius: 50%;
+    background: transparent;
 } 
