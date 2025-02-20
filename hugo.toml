@@ -20,7 +20,7 @@ theme = 'awesome-custom'
   # Your avatar URL
   avatar = "https://github.com/vishgm.png"
   # Main sections to include in lists
-  mainSections = ["posts", "ml", "system-design", "current-reads", "projects"]
+  mainSections = ["posts", "ml", "system-design", "current-reads"]
 
 [menu]
   [[menu.main]]

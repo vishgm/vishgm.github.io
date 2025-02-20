@@ -1,6 +1,6 @@
 ---
 title: "Introduction to System Design"
-date: 2024-02-15
+date: 2025-02-20
 description: "Starting my journey to document and share system design concepts and learnings"
 readingTime: 4
 ---

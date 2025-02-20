@@ -1375,6 +1375,16 @@ a, button, input,
         height: auto;
         margin: 0;
         display: block;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        
+        @media (max-width: 768px) {
+            width: 100%;
+            object-fit: contain;
+            transform: translateZ(0); // Force GPU acceleration
+            backface-visibility: hidden; // Prevent blurry text
+            -webkit-font-smoothing: subpixel-antialiased;
+        }
     }
 
     .dark-mode-image {

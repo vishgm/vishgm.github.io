@@ -1,6 +1,6 @@
 ---
 title: "Getting Started with Machine Learning"
-date: 2024-02-15
+date: 2025-02-20
 description: "An introduction to my journey in Machine Learning and what I'll be sharing here"
 readingTime: 5
 ---
