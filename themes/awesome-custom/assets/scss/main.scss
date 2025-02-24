@@ -1552,4 +1552,12 @@ link[rel="icon"],
 link[rel="apple-touch-icon"] {
     border-radius: 50%;
     background: transparent;
+}
+
+// Category separator
+.category-separator {
+    height: 1px;
+    background: var(--border-color);
+    margin: 4rem 0;
+    opacity: 0.5;
 } 
