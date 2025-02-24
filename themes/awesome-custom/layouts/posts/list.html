@@ -23,9 +23,11 @@
             {{ if gt (len $posts) 0 }}
                 <div class="category-section">
                     <div class="category-header">
-                        <h2>{{ .Title }}</h2>
-                        <div class="category-meta">
+                        <div class="title-with-count">
+                            <h2>{{ .Title }}</h2>
                             <span class="post-count">{{ len $posts }} {{ if eq (len $posts) 1 }}post{{ else }}posts{{ end }}</span>
+                        </div>
+                        <div class="category-meta">
                             <a href="{{ .RelPermalink }}" class="view-all-link">View All →</a>
                         </div>
                     </div>
@@ -59,15 +61,65 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('search-input');
     const searchButton = document.getElementById('search-button');
     const posts = document.querySelectorAll('.category-post');
+    const categoryContainers = document.querySelectorAll('.category-section');
+    const separators = document.querySelectorAll('.category-separator');
     
     function performSearch() {
         const searchTerm = searchInput.value.toLowerCase().trim();
-        posts.forEach(post => {
-            const title = post.querySelector('.post-title').textContent.toLowerCase();
-            const description = post.querySelector('.post-description')?.textContent.toLowerCase() || '';
-            const matches = title.includes(searchTerm) || description.includes(searchTerm);
-            post.style.display = matches ? 'block' : 'none';
+        
+        // Remove existing no-results message if it exists
+        const existingNoResults = document.querySelector('.no-results');
+        if (existingNoResults) {
+            existingNoResults.remove();
+        }
+        
+        // Hide all separators initially
+        separators.forEach(separator => {
+            separator.style.display = 'none';
         });
+        
+        // Track if we have any results at all
+        let hasAnyResults = false;
+        
+        // Process each category container
+        categoryContainers.forEach((categoryContainer, index) => {
+            const postsInCategory = categoryContainer.querySelectorAll('.category-post');
+            let hasVisiblePosts = false;
+            
+            // Check posts in this category
+            postsInCategory.forEach(post => {
+                const title = post.querySelector('.post-title').textContent.toLowerCase();
+                const description = post.querySelector('.post-description')?.textContent.toLowerCase() || '';
+                const matches = title.includes(searchTerm) || description.includes(searchTerm);
+                
+                post.style.display = matches ? 'block' : 'none';
+                if (matches) {
+                    hasVisiblePosts = true;
+                    hasAnyResults = true;
+                }
+            });
+            
+            // Show/hide category based on whether it has matching posts
+            categoryContainer.style.display = hasVisiblePosts ? 'block' : 'none';
+            
+            // Show separator if this category and the next one are visible
+            if (index < categoryContainers.length - 1) {
+                const nextCategoryHasVisiblePosts = Array.from(categoryContainers[index + 1].querySelectorAll('.category-post'))
+                    .some(post => post.style.display !== 'none');
+                    
+                if (hasVisiblePosts && nextCategoryHasVisiblePosts && index < separators.length) {
+                    separators[index].style.display = 'block';
+                }
+            }
+        });
+        
+        // Show no results message if necessary
+        if (!hasAnyResults && searchTerm !== '') {
+            const noResults = document.createElement('div');
+            noResults.className = 'no-results';
+            noResults.textContent = 'No posts found matching your search.';
+            document.querySelector('.posts-page').appendChild(noResults);
+        }
     }
     
     searchInput.addEventListener('input', performSearch);

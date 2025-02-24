@@ -18,7 +18,7 @@
     
     
     
-    <link rel="stylesheet" href="/css/main.821147b1c945d6333783aa93ea924ff6e7daf0234bb20a5148a706afa733dd6f90d1a5fd6a56b88b43cb6a82fa37b1224da276777fb8533fc017b34800a81bda.css" integrity="sha512-ghFHsclF1jM3g6qT6pJP9ufa8CNLsgpRSKcGr6cz3W&#43;Q0aX9ala4i0PLaoL6N7EiTaJ2d3&#43;4Uz/AF7NIAKgb2g==">
+    <link rel="stylesheet" href="/css/main.eed8dbc27fa1fc1b61a78ef624f35fc37b66c2b7e61c683b5fae081ecc3a761c7a39ffbc207bc9069fba0ac7b9e1a1712403c8e64a91a31abbae923e37107fb0.css" integrity="sha512-7tjbwn&#43;h/Bthp472JPNfw3tmwrfmHGg7X64IHsw6dhx6Of&#43;8IHvJBp&#43;6Cse54aFxJAPI5kqRoxq7rpI&#43;NxB/sA==">
     
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
@@ -114,9 +114,11 @@
             
                 <div class="category-section">
                     <div class="category-header">
-                        <h2>Machine Learning</h2>
-                        <div class="category-meta">
+                        <div class="title-with-count">
+                            <h2>Machine Learning</h2>
                             <span class="post-count">2 posts</span>
+                        </div>
+                        <div class="category-meta">
                             <a href="/ml/" class="view-all-link">View All →</a>
                         </div>
                     </div>
@@ -161,9 +163,11 @@
             
                 <div class="category-section">
                     <div class="category-header">
-                        <h2>System Design</h2>
-                        <div class="category-meta">
+                        <div class="title-with-count">
+                            <h2>System Design</h2>
                             <span class="post-count">1 post</span>
+                        </div>
+                        <div class="category-meta">
                             <a href="/system-design/" class="view-all-link">View All →</a>
                         </div>
                     </div>
@@ -196,9 +200,11 @@
             
                 <div class="category-section">
                     <div class="category-header">
-                        <h2>Current Reads</h2>
-                        <div class="category-meta">
+                        <div class="title-with-count">
+                            <h2>Current Reads</h2>
                             <span class="post-count">1 post</span>
+                        </div>
+                        <div class="category-meta">
                             <a href="/current-reads/" class="view-all-link">View All →</a>
                         </div>
                     </div>
@@ -230,15 +236,65 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('search-input');
     const searchButton = document.getElementById('search-button');
     const posts = document.querySelectorAll('.category-post');
+    const categoryContainers = document.querySelectorAll('.category-section');
+    const separators = document.querySelectorAll('.category-separator');
     
     function performSearch() {
         const searchTerm = searchInput.value.toLowerCase().trim();
-        posts.forEach(post => {
-            const title = post.querySelector('.post-title').textContent.toLowerCase();
-            const description = post.querySelector('.post-description')?.textContent.toLowerCase() || '';
-            const matches = title.includes(searchTerm) || description.includes(searchTerm);
-            post.style.display = matches ? 'block' : 'none';
+        
+        
+        const existingNoResults = document.querySelector('.no-results');
+        if (existingNoResults) {
+            existingNoResults.remove();
+        }
+        
+        
+        separators.forEach(separator => {
+            separator.style.display = 'none';
         });
+        
+        
+        let hasAnyResults = false;
+        
+        
+        categoryContainers.forEach((categoryContainer, index) => {
+            const postsInCategory = categoryContainer.querySelectorAll('.category-post');
+            let hasVisiblePosts = false;
+            
+            
+            postsInCategory.forEach(post => {
+                const title = post.querySelector('.post-title').textContent.toLowerCase();
+                const description = post.querySelector('.post-description')?.textContent.toLowerCase() || '';
+                const matches = title.includes(searchTerm) || description.includes(searchTerm);
+                
+                post.style.display = matches ? 'block' : 'none';
+                if (matches) {
+                    hasVisiblePosts = true;
+                    hasAnyResults = true;
+                }
+            });
+            
+            
+            categoryContainer.style.display = hasVisiblePosts ? 'block' : 'none';
+            
+            
+            if (index < categoryContainers.length - 1) {
+                const nextCategoryHasVisiblePosts = Array.from(categoryContainers[index + 1].querySelectorAll('.category-post'))
+                    .some(post => post.style.display !== 'none');
+                    
+                if (hasVisiblePosts && nextCategoryHasVisiblePosts && index < separators.length) {
+                    separators[index].style.display = 'block';
+                }
+            }
+        });
+        
+        
+        if (!hasAnyResults && searchTerm !== '') {
+            const noResults = document.createElement('div');
+            noResults.className = 'no-results';
+            noResults.textContent = 'No posts found matching your search.';
+            document.querySelector('.posts-page').appendChild(noResults);
+        }
     }
     
     searchInput.addEventListener('input', performSearch);
