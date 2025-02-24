@@ -1,61 +1,80 @@
 {{ define "main" }}
-<div class="list-content">
+<div class="list-content posts-page">
     <header class="list-header">
-        <h1 class="list-title">{{ .Title }}</h1>
-        {{ with .Description }}
-        <p class="list-description">{{ . }}</p>
-        {{ end }}
+        <h1 class="list-title">All Posts</h1>
+        <p class="list-description">Browse all my blog posts across different topics and categories</p>
     </header>
 
     <div class="search-container">
         <input type="text" id="search-input" placeholder="Search posts..." aria-label="Search posts">
         <button id="search-button" aria-label="Search">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="11" cy="11" r="8"></circle>
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
         </button>
     </div>
 
-    <div class="category-sections">
-        {{ $sections := slice "ml" "system-design" "current-reads" }}
-        {{ range $sections }}
-        {{ $section := $.Site.GetPage (printf "/%s" .) }}
-        {{ if $section }}
-        <section class="category-section">
-            <div class="category-header">
-                <h2>{{ $section.Title }}</h2>
-                <div class="category-meta">
-                    {{ $postCount := len $section.RegularPages }}
-                    <span class="post-count">{{ $postCount }} {{ if eq $postCount 1 }}post{{ else }}posts{{ end }}</span>
-                    <a href="{{ $section.RelPermalink }}" class="view-all-link">View All →</a>
-                </div>
+    {{/* Group posts by section */}}
+    {{ range .Site.Params.mainSections }}
+    {{ $section := . }}
+    {{ with $.Site.GetPage $section }}
+    {{ $posts := .RegularPages }}
+    {{ if gt (len $posts) 0 }}
+    <div class="category-section">
+        <div class="category-header">
+            <h2>{{ .Title }}</h2>
+            <div class="category-meta">
+                <span class="post-count">{{ len $posts }} {{ if eq (len $posts) 1 }}post{{ else }}posts{{ end }}</span>
+                <a href="{{ .RelPermalink }}" class="view-all-link">View All →</a>
             </div>
-            <p class="category-description">{{ $section.Description }}</p>
-            <div class="category-posts">
-                {{ range first 2 $section.Pages }}
-                <article class="category-post">
-                    <a href="{{ .RelPermalink }}" class="post-link">
-                        <h3 class="post-title">{{ .Title }}</h3>
-                        <div class="post-meta">
-                            <time>{{ .Date.Format "Jan 2, 2006" }}</time>
-                            {{ if .Params.readingTime }}
-                            • {{ .Params.readingTime }} min read
-                            {{ end }}
-                        </div>
-                        {{ with .Description }}
-                        <p class="post-description">{{ . }}</p>
-                        {{ end }}
-                    </a>
-                </article>
-                {{ end }}
-            </div>
-        </section>
-        {{ end }}
-        {{ end }}
+        </div>
+        <p class="category-description">{{ .Description }}</p>
+        <div class="category-posts">
+            {{ range $posts }}
+            <article class="category-post">
+                <a href="{{ .RelPermalink }}" class="post-link">
+                    <h3 class="post-title">{{ .Title }}</h3>
+                    <div class="post-meta">
+                        {{ .Date.Format "Jan 2, 2006" }} • {{ .Params.readingTime }} min read
+                    </div>
+                    {{ with .Description }}
+                    <p class="post-description">{{ . }}</p>
+                    {{ end }}
+                </a>
+            </article>
+            {{ end }}
+        </div>
     </div>
+    {{ end }}
+    {{ end }}
+    {{ end }}
 </div>
 
-{{ $search := resources.Get "js/search.js" | resources.Minify }}
-<script src="{{ $search.RelPermalink }}"></script>
+<script>
+// Search functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('search-input');
+    const searchButton = document.getElementById('search-button');
+    const posts = document.querySelectorAll('.category-post');
+    
+    function performSearch() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        posts.forEach(post => {
+            const title = post.querySelector('.post-title').textContent.toLowerCase();
+            const description = post.querySelector('.post-description')?.textContent.toLowerCase() || '';
+            const matches = title.includes(searchTerm) || description.includes(searchTerm);
+            post.style.display = matches ? 'block' : 'none';
+        });
+    }
+    
+    searchInput.addEventListener('input', performSearch);
+    searchButton.addEventListener('click', performSearch);
+    searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            performSearch();
+        }
+    });
+});
+</script>
 {{ end }} 

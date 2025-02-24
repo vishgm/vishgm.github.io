@@ -85,7 +85,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "about.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +101,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "about.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "about.md"
+                "file": "Temp.md"
               }
             }
           }
@@ -147,8 +145,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "7c7bd1900cf417a7",
+  "active": "80e7deed0de0f462",
   "lastOpenFiles": [
-    "about.md"
+    "posts/_index.md",
+    "posts",
+    "Temp.md",
+    "about.md",
+    "ml/time_series_basics.md",
+    "ml/basic_statistics.md",
+    "notebooks/example_analysis.md",
+    "notebooks"
   ]
 }

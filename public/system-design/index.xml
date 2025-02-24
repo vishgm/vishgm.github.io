@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>System Design on Vishak Gopkumar</title><link>http://localhost:1313/system-design/</link><description>Recent content in System Design on Vishak Gopkumar</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 20 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/system-design/index.xml" rel="self" type="application/rss+xml"/><item><title>Introduction to System Design</title><link>http://localhost:1313/system-design/intro-system-design/</link><pubDate>Thu, 20 Feb 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/system-design/intro-system-design/</guid><description>&lt;p>Welcome to my System Design section! Here I&amp;rsquo;ll be documenting my learnings about system design, architecture patterns, and real-world implementations.&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>System Design on Vishak Gopkumar</title>
+    <link>http://localhost:1313/system-design/</link>
+    <description>Recent content in System Design on Vishak Gopkumar</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 20 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/system-design/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduction to System Design</title>
+      <link>http://localhost:1313/system-design/intro-system-design/</link>
+      <pubDate>Thu, 20 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/system-design/intro-system-design/</guid>
+      <description>&lt;p&gt;Welcome to my System Design section! Here I&amp;rsquo;ll be documenting my learnings about system design, architecture patterns, and real-world implementations.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

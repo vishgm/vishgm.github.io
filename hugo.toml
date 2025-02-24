@@ -47,3 +47,9 @@ theme = 'awesome-custom'
     endLevel = 3
     ordered = false
     startLevel = 2
+
+[frontmatter]
+  date = ["date", "publishDate", "lastmod"]
+  lastmod = [":git", "lastmod", "date", "publishDate"]
+  publishDate = ["publishDate", "date"]
+  expiryDate = ["expiryDate"]

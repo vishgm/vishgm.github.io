@@ -9,14 +9,19 @@
 
     {{ .Content }}
     
-    {{ $paginator := .Paginate .RegularPages }}
+    {{ $pages := where .RegularPages "Params.date" "!=" nil }}
+    {{ $sorted := $pages.ByDate.Reverse }}
+    {{ $paginator := .Paginate $sorted }}
+    
     <div class="category-posts">
         {{ range $paginator.Pages }}
         <article class="category-post">
             <a href="{{ .RelPermalink }}" class="post-link">
                 <h3 class="post-title">{{ .Title }}</h3>
                 <div class="post-meta">
-                    <time>{{ .Date.Format "Jan 2, 2006" }}</time>
+                    {{ with .Params.date }}
+                    <time datetime="{{ . }}">{{ dateFormat "Jan 2, 2006" . }}</time>
+                    {{ end }}
                     {{ if .Params.readingTime }}
                     • {{ .Params.readingTime }} min read
                     {{ end }}

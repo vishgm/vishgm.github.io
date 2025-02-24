@@ -1,67 +1,47 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Vishak Gopkumar</title><link>http://localhost:1313/</link><description>Recent content on Vishak Gopkumar</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 20 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml"/><item><title>Getting Started with Machine Learning</title><link>http://localhost:1313/ml/first-ml-post/</link><pubDate>Thu, 20 Feb 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/ml/first-ml-post/</guid><description>&lt;p>This is my first post in the Machine Learning category. Here I&amp;rsquo;ll be sharing my learning journey, insights, and experiences in the field of ML.&lt;/p></description></item><item><title>Introduction to System Design</title><link>http://localhost:1313/system-design/intro-system-design/</link><pubDate>Thu, 20 Feb 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/system-design/intro-system-design/</guid><description>&lt;p>Welcome to my System Design section! Here I&amp;rsquo;ll be documenting my learnings about system design, architecture patterns, and real-world implementations.&lt;/p></description></item><item><title>My Current Reading List</title><link>http://localhost:1313/current-reads/current-reading-list/</link><pubDate>Thu, 20 Feb 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/current-reads/current-reading-list/</guid><description>&lt;p>Here&amp;rsquo;s what I&amp;rsquo;m currently reading and my thoughts on these materials. I&amp;rsquo;ll be updating this section with notes and insights from my reading journey.&lt;/p></description></item><item><title>Understanding Transformer Architecture</title><link>http://localhost:1313/ml/understanding-transformers/</link><pubDate>Thu, 20 Feb 2025 00:00:00 +0000</pubDate><guid>http://localhost:1313/ml/understanding-transformers/</guid><description>&lt;p>The transformer architecture has revolutionized natural language processing since its introduction in the &amp;ldquo;Attention Is All You Need&amp;rdquo; paper. Let&amp;rsquo;s break down its key components.&lt;/p>
-&lt;h2 id="key-components">Key Components&lt;/h2>
-&lt;h3 id="1-self-attention-mechanism">1. Self-Attention Mechanism&lt;/h3>
-&lt;p>The heart of the transformer is its self-attention mechanism. It allows the model to weigh the importance of different words in the input sequence:&lt;/p>
-&lt;p>$$
-\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
-$$&lt;/p>
-&lt;h3 id="2-multi-head-attention">2. Multi-Head Attention&lt;/h3>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">class&lt;/span> &lt;span style="color:#50fa7b">MultiHeadAttention&lt;/span>(nn&lt;span style="color:#ff79c6">.&lt;/span>Module):
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">def&lt;/span> __init__(self, d_model, num_heads):
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#8be9fd;font-style:italic">super&lt;/span>()&lt;span style="color:#ff79c6">.&lt;/span>__init__()
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#ff79c6">.&lt;/span>num_heads &lt;span style="color:#ff79c6">=&lt;/span> num_heads
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#ff79c6">.&lt;/span>d_model &lt;span style="color:#ff79c6">=&lt;/span> d_model
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#ff79c6">.&lt;/span>d_k &lt;span style="color:#ff79c6">=&lt;/span> d_model &lt;span style="color:#ff79c6">//&lt;/span> num_heads
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#ff79c6">.&lt;/span>W_q &lt;span style="color:#ff79c6">=&lt;/span> nn&lt;span style="color:#ff79c6">.&lt;/span>Linear(d_model, d_model)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#ff79c6">.&lt;/span>W_k &lt;span style="color:#ff79c6">=&lt;/span> nn&lt;span style="color:#ff79c6">.&lt;/span>Linear(d_model, d_model)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#ff79c6">.&lt;/span>W_v &lt;span style="color:#ff79c6">=&lt;/span> nn&lt;span style="color:#ff79c6">.&lt;/span>Linear(d_model, d_model)
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="why-transformers-matter">Why Transformers Matter&lt;/h2>
-&lt;ol>
-&lt;li>&lt;strong>Parallelization&lt;/strong>: Unlike RNNs, transformers can process all input tokens simultaneously&lt;/li>
-&lt;li>&lt;strong>Long-range Dependencies&lt;/strong>: Self-attention helps capture relationships between distant words&lt;/li>
-&lt;li>&lt;strong>Scalability&lt;/strong>: The architecture scales well with more data and compute&lt;/li>
-&lt;/ol>
-&lt;h2 id="further-reading">Further Reading&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a href="https://arxiv.org/abs/1706.03762">Attention Is All You Need&lt;/a>&lt;/li>
-&lt;li>&lt;a href="http://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>About</title><link>http://localhost:1313/about/</link><pubDate>Thu, 15 Feb 2024 00:00:00 +0000</pubDate><guid>http://localhost:1313/about/</guid><description>&lt;h2 id="about-me">About Me&lt;/h2>
-&lt;p>I&amp;rsquo;m someone who loves to explore and share knowledge about:&lt;/p>
-&lt;ul>
-&lt;li>Technology&lt;/li>
-&lt;li>Programming&lt;/li>
-&lt;li>Productivity&lt;/li>
-&lt;/ul>
-&lt;p>Also, love to share my insights and experiences with everyone :)&lt;/p>
-&lt;h2 id="technical-me">Technical Me&lt;/h2>
-&lt;p>In my professional career, I work as a Data Scientist in the FinTech space.&lt;/p>
-&lt;p>Here&amp;rsquo;s a summary of my work experience:&lt;/p>
-&lt;div class="theme-aware-image">
- &lt;object data="/assets/about-venn.svg" type="image/svg+xml" class="light-mode-svg">&lt;/object>
- &lt;object data="/assets/about-venn-dark.svg" type="image/svg+xml" class="dark-mode-svg">&lt;/object>
-&lt;/div>
-&lt;h2 id="contact">Contact&lt;/h2>
-&lt;p>Feel free to reach out to me through:&lt;/p>
-&lt;ul>
-&lt;li>Email: &lt;a href="mailto:repoman2k@gmail.com">&lt;a href="mailto:repoman2k@gmail.com">repoman2k@gmail.com&lt;/a>&lt;/a>&lt;/li>
-&lt;li>GitHub: &lt;a href="https://github.com/vishgm" target="_blank" rel="noopener noreferrer">github.com/vishgm&lt;/a>&lt;/li>
-&lt;li>Linkedin: &lt;a href="https://www.linkedin.com/in/vishak-g/" target="_blank" rel="noopener noreferrer">linkedin.com/in/vishak-g&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;p>Thank you for visiting!&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vishak Gopkumar</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Vishak Gopkumar</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 20 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Getting Started with Machine Learning</title>
+      <link>http://localhost:1313/ml/first-ml-post/</link>
+      <pubDate>Thu, 20 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ml/first-ml-post/</guid>
+      <description>&lt;p&gt;This is my first post in the Machine Learning category. Here I&amp;rsquo;ll be sharing my learning journey, insights, and experiences in the field of ML.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Introduction to System Design</title>
+      <link>http://localhost:1313/system-design/intro-system-design/</link>
+      <pubDate>Thu, 20 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/system-design/intro-system-design/</guid>
+      <description>&lt;p&gt;Welcome to my System Design section! Here I&amp;rsquo;ll be documenting my learnings about system design, architecture patterns, and real-world implementations.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>My Current Reading List</title>
+      <link>http://localhost:1313/current-reads/current-reading-list/</link>
+      <pubDate>Thu, 20 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/current-reads/current-reading-list/</guid>
+      <description>&lt;p&gt;Here&amp;rsquo;s what I&amp;rsquo;m currently reading and my thoughts on these materials. I&amp;rsquo;ll be updating this section with notes and insights from my reading journey.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Understanding Transformer Architecture</title>
+      <link>http://localhost:1313/ml/understanding-transformers/</link>
+      <pubDate>Thu, 20 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ml/understanding-transformers/</guid>
+      <description>&lt;p&gt;The transformer architecture has revolutionized natural language processing since its introduction in the &amp;ldquo;Attention Is All You Need&amp;rdquo; paper. Let&amp;rsquo;s break down its key components.&lt;/p&gt;&#xA;&lt;h2 id=&#34;key-components&#34;&gt;Key Components&lt;/h2&gt;&#xA;&lt;h3 id=&#34;1-self-attention-mechanism&#34;&gt;1. Self-Attention Mechanism&lt;/h3&gt;&#xA;&lt;p&gt;The heart of the transformer is its self-attention mechanism. It allows the model to weigh the importance of different words in the input sequence:&lt;/p&gt;&#xA;&lt;p&gt;$$&#xA;\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V&#xA;$$&lt;/p&gt;&#xA;&lt;h3 id=&#34;2-multi-head-attention&#34;&gt;2. Multi-Head Attention&lt;/h3&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&#xA;&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 1&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 2&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 3&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 4&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 5&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 6&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 7&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 8&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 9&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;10&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;MultiHeadAttention&lt;/span&gt;(nn&lt;span style=&#34;color:#ff79c6&#34;&gt;.&lt;/span&gt;Module):&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;def&lt;/span&gt; __init__(self, d_model, num_heads):&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;super&lt;/span&gt;()&lt;span style=&#34;color:#ff79c6&#34;&gt;.&lt;/span&gt;__init__()&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#ff79c6&#34;&gt;.&lt;/span&gt;num_heads &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; num_heads&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#ff79c6&#34;&gt;.&lt;/span&gt;d_model &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; d_model&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#ff79c6&#34;&gt;.&lt;/span&gt;d_k &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; d_model &lt;span style=&#34;color:#ff79c6&#34;&gt;//&lt;/span&gt; num_heads&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#ff79c6&#34;&gt;.&lt;/span&gt;W_q &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; nn&lt;span style=&#34;color:#ff79c6&#34;&gt;.&lt;/span&gt;Linear(d_model, d_model)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#ff79c6&#34;&gt;.&lt;/span&gt;W_k &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; nn&lt;span style=&#34;color:#ff79c6&#34;&gt;.&lt;/span&gt;Linear(d_model, d_model)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        self&lt;span style=&#34;color:#ff79c6&#34;&gt;.&lt;/span&gt;W_v &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; nn&lt;span style=&#34;color:#ff79c6&#34;&gt;.&lt;/span&gt;Linear(d_model, d_model)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;h2 id=&#34;why-transformers-matter&#34;&gt;Why Transformers Matter&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;Parallelization&lt;/strong&gt;: Unlike RNNs, transformers can process all input tokens simultaneously&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Long-range Dependencies&lt;/strong&gt;: Self-attention helps capture relationships between distant words&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Scalability&lt;/strong&gt;: The architecture scales well with more data and compute&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;further-reading&#34;&gt;Further Reading&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://arxiv.org/abs/1706.03762&#34;&gt;Attention Is All You Need&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://jalammar.github.io/illustrated-transformer/&#34;&gt;The Illustrated Transformer&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>About</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Thu, 15 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/about/</guid>
+      <description>&lt;h2 id=&#34;about-me&#34;&gt;About Me&lt;/h2&gt;&#xA;&lt;p&gt;I&amp;rsquo;m someone who loves to explore and share knowledge about:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Technology&lt;/li&gt;&#xA;&lt;li&gt;Programming&lt;/li&gt;&#xA;&lt;li&gt;Productivity&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Also, love to share my insights and experiences with everyone :)&lt;/p&gt;&#xA;&lt;h2 id=&#34;technical-me&#34;&gt;Technical Me&lt;/h2&gt;&#xA;&lt;p&gt;In my professional career, I work as a Data Scientist in the FinTech space.&lt;/p&gt;&#xA;&lt;p&gt;Here&amp;rsquo;s a summary of my work experience:&lt;/p&gt;&#xA;&lt;div class=&#34;theme-aware-image&#34;&gt;&#xA;    &lt;object data=&#34;/assets/about-venn.svg&#34; type=&#34;image/svg+xml&#34; class=&#34;light-mode-svg&#34;&gt;&lt;/object&gt;&#xA;    &lt;object data=&#34;/assets/about-venn-dark.svg&#34; type=&#34;image/svg+xml&#34; class=&#34;dark-mode-svg&#34;&gt;&lt;/object&gt;&#xA;&lt;/div&gt;&#xA;&lt;h2 id=&#34;contact&#34;&gt;Contact&lt;/h2&gt;&#xA;&lt;p&gt;Feel free to reach out to me through:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Email: &lt;a href=&#34;mailto:repoman2k@gmail.com&#34;&gt;&lt;a href=&#34;mailto:repoman2k@gmail.com&#34;&gt;repoman2k@gmail.com&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;GitHub: &lt;a href=&#34;https://github.com/vishgm&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;github.com/vishgm&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;Linkedin: &lt;a href=&#34;https://www.linkedin.com/in/vishak-g/&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;linkedin.com/in/vishak-g&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Thank you for visiting!&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

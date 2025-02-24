@@ -7,15 +7,29 @@
         {{ end }}
     </header>
 
-    {{ $sections := slice "ml" "system-design" "current-reads" "posts" }}
-    {{ $allPosts := slice }}
-    {{ range $sections }}
-        {{ $section := . }}
-        {{ $posts := where $.Site.RegularPages "Section" $section }}
-        {{ $allPosts = $allPosts | append $posts }}
-    {{ end }}
+    <!-- Debug info -->
+    <div style="background: #333; color: white; padding: 1rem; margin: 1rem 0; font-family: monospace;">
+        <p>Current Section: {{ .Section }}</p>
+        <p>Available Sections: {{ .Site.Params.mainSections }}</p>
+        <p>Regular Pages Count: {{ len .Site.RegularPages }}</p>
+        {{ range .Site.RegularPages }}
+        <p>Page: {{ .Title }} ({{ .Section }}) - {{ .Date }}</p>
+        {{ end }}
+    </div>
+
+    {{/* Get all posts */}}
+    {{ $pages := where .Site.RegularPages "Section" "in" (slice "ml" "system-design" "current-reads") }}
     
-    {{ $paginator := .Paginate $allPosts.ByDate.Reverse }}
+    <!-- Debug info -->
+    <div style="background: #333; color: white; padding: 1rem; margin: 1rem 0; font-family: monospace;">
+        <p>Collected Pages Count: {{ len $pages }}</p>
+        {{ range $pages }}
+        <p>Collected: {{ .Title }} ({{ .Section }}) - {{ .Date }}</p>
+        {{ end }}
+    </div>
+    
+    {{/* Sort pages */}}
+    {{ $paginator := .Paginate ($pages.ByDate.Reverse) }}
     
     <div class="posts-list">
         {{ range $paginator.Pages }}
@@ -27,7 +41,9 @@
                 <a href="{{ .RelPermalink }}">{{ .Title }}</a>
             </h2>
             <div class="post-meta">
-                <time>{{ .Date.Format "Jan 2, 2006" }}</time>
+                {{ with .Date }}
+                <time datetime="{{ . }}">{{ .Format "Jan 2, 2006" }}</time>
+                {{ end }}
                 {{ if .Params.readingTime }}
                 • {{ .Params.readingTime }} min read
                 {{ end }}
@@ -50,12 +66,12 @@
     </div>
     {{ end }}
 
+    {{ if eq .Section "posts" }}
     <div class="categories-list">
         <h2>Browse by Category</h2>
         <div class="category-grid">
-            {{ range $sections }}
-            {{ $section := . }}
-            {{ with $.Site.GetPage $section }}
+            {{ range .Site.Params.mainSections }}
+            {{ with $.Site.GetPage . }}
             {{ $postCount := len .RegularPages }}
             <a href="{{ .RelPermalink }}" class="category-card">
                 <div class="category-card-header">
@@ -68,5 +84,6 @@
             {{ end }}
         </div>
     </div>
+    {{ end }}
 </div>
 {{ end }} 
