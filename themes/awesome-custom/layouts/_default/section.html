@@ -1,5 +1,5 @@
 {{ define "main" }}
-<div class="section-content">
+<div class="posts-page">
     <header class="section-header">
         <h1 class="section-title">{{ .Title }}</h1>
         {{ with .Description }}
@@ -13,25 +13,22 @@
     {{ $sorted := $pages.ByDate.Reverse }}
     {{ $paginator := .Paginate $sorted }}
     
-    <div class="category-posts">
-        {{ range $paginator.Pages }}
-        <article class="category-post">
-            <a href="{{ .RelPermalink }}" class="post-link">
-                <h3 class="post-title">{{ .Title }}</h3>
-                <div class="post-meta">
-                    {{ with .Params.date }}
-                    <time datetime="{{ . }}">{{ dateFormat "Jan 2, 2006" . }}</time>
+    <div class="category-section">
+        <div class="category-posts">
+            {{ range $paginator.Pages }}
+            <article class="category-post">
+                <a href="{{ .RelPermalink }}" class="post-link">
+                    <h3 class="post-title">{{ .Title }}</h3>
+                    <div class="post-meta">
+                        {{ .Date.Format "Jan 2, 2006" }} • {{ .Params.readingTime }} min read
+                    </div>
+                    {{ with .Description }}
+                    <p class="post-description">{{ . }}</p>
                     {{ end }}
-                    {{ if .Params.readingTime }}
-                    • {{ .Params.readingTime }} min read
-                    {{ end }}
-                </div>
-                {{ with .Description }}
-                <p class="post-description">{{ . }}</p>
-                {{ end }}
-            </a>
-        </article>
-        {{ end }}
+                </a>
+            </article>
+            {{ end }}
+        </div>
     </div>
 
     {{ if gt $paginator.TotalPages 1 }}
