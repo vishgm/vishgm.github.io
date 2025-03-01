@@ -9,26 +9,30 @@
         <span class="separator">/</span>
         <span class="current">{{ .Title }}</span>
     </div>
+    {{ if .Section }}
     <a href="/posts" class="back-to-posts">← Back to all posts</a>
+    {{ end }}
 </div>
 
 <div class="post-wrapper">
     <article class="post">
         <header class="post-header">
             <h1 class="post-title">{{ .Title }}</h1>
+            {{ if .Section }}
             <div class="post-meta">
                 <time>{{ .Date.Format "Jan 2, 2006" }}</time>
                 {{ if .Site.Params.showReadingTime }}
                 <span class="reading-time">{{ .ReadingTime }} min read</span>
                 {{ end }}
             </div>
+            {{ end }}
         </header>
 
         <div class="post-content">
             {{ .Content }}
         </div>
 
-        {{ if .Site.Params.showPostNavigation }}
+        {{ if and .Section .Site.Params.showPostNavigation }}
         <nav class="post-navigation">
             {{ with .PrevInSection }}
             <a class="prev-post" href="{{ .RelPermalink }}">← {{ .Title }}</a>
@@ -40,13 +44,11 @@
         {{ end }}
     </article>
 
-    {{ if .Site.Params.showToc }}
-    {{ if .TableOfContents }}
+    {{ if and .Site.Params.showToc .TableOfContents }}
     <aside class="table-of-contents">
         <h2>Table of Contents</h2>
         {{ .TableOfContents }}
     </aside>
-    {{ end }}
     {{ end }}
 </div>
 {{ end }} 

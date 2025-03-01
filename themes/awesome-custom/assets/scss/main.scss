@@ -641,7 +641,7 @@ p > code {
     justify-content: space-between;
     margin-top: 3rem;
     padding-top: 2rem;
-    border-top: 1px solid var(--border-color);
+    width: 100%;
     
     a {
         color: var(--link-color);
@@ -654,12 +654,12 @@ p > code {
     }
     
     .prev-post {
-        margin-right: auto;
+        text-align: left;
     }
     
     .next-post {
-        margin-left: auto;
         text-align: right;
+        margin-left: auto;
     }
 }
 
@@ -1449,7 +1449,6 @@ h6 { font-size: 1rem; }
     align-items: center;
     margin-bottom: 2rem;
     padding: 1rem 0;
-    border-bottom: 1px solid var(--border-color);
     
     @media (max-width: 768px) {
         flex-direction: column;
@@ -1605,19 +1604,6 @@ link[rel="apple-touch-icon"] {
     background: transparent;
 }
 
-// Category separator
-.category-separator {
-    height: 1px;
-    background: var(--border-color);
-    margin: 4rem calc(-50vw + 50%);
-    opacity: 0.5;
-    position: relative;
-    width: 100vw;
-    left: 50%;
-    right: 50%;
-    transform: translateX(-50%);
-}
-
 // Post wrapper and TOC layout
 .post-wrapper {
     display: grid;
@@ -1729,4 +1715,14 @@ link[rel="apple-touch-icon"] {
             }
         }
     }
+}
+
+// Category Separator
+.category-separator {
+    height: 1px;
+    margin: 4rem 0;
+    background: var(--border-color);
+    opacity: 0.5;
+    width: 100%;
+    position: relative;
 } 

@@ -16,8 +16,7 @@
     </div>
 
     {{/* Group posts by section */}}
-    {{ range .Site.Params.mainSections }}
-        {{ $section := . }}
+    {{ range $index, $section := .Site.Params.mainSections }}
         {{ with $.Site.GetPage $section }}
             {{ $posts := .RegularPages }}
             {{ if gt (len $posts) 0 }}
