@@ -61,8 +61,6 @@ body {
 
 // Header
 .header {
-    position: sticky;
-    top: 0;
     background: var(--header-bg);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color);
@@ -70,7 +68,6 @@ body {
     z-index: 1000;
     
     @media (max-width: 768px) {
-        position: relative;
         padding: 0.5rem 0;
         
         .nav {
@@ -1576,4 +1573,117 @@ link[rel="apple-touch-icon"] {
     background: var(--border-color);
     margin: 4rem 0;
     opacity: 0.5;
+}
+
+// Post wrapper and TOC layout
+.post-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 2rem;
+    align-items: start;
+    position: relative;
+    
+    @media (max-width: 1024px) {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        display: flex;
+        flex-direction: column;
+        
+        // Move TOC to top on mobile
+        .table-of-contents {
+            order: -1;
+            margin-bottom: 2rem;
+        }
+    }
+    
+    .post {
+        grid-column: 1;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .table-of-contents {
+        grid-column: 2;
+        position: sticky;
+        top: 80px;
+        height: fit-content;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding: 1.5rem;
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        background: var(--bg-color);
+        font-size: 0.9rem;
+        align-self: start;
+        z-index: 100;
+        
+        @media (max-width: 1024px) {
+            position: relative;
+            top: 0;
+            max-height: none;
+            width: 100%;
+            grid-column: 1;
+        }
+        
+        h2 {
+            font-size: 1.2rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+            
+            ul {
+                padding-left: 1rem;
+            }
+        }
+        
+        li {
+            margin: 0.5rem 0;
+            
+            a {
+                color: var(--text-color);
+                text-decoration: none;
+                display: block;
+                padding: 0.2rem 0;
+                transition: all 0.2s ease;
+                opacity: 0.8;
+                
+                &:hover {
+                    color: var(--link-color);
+                    opacity: 1;
+                    transform: translateX(4px);
+                }
+                
+                &.active {
+                    color: var(--link-color);
+                    opacity: 1;
+                }
+            }
+        }
+        
+        // Custom scrollbar
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        &::-webkit-scrollbar-track {
+            background: var(--border-color);
+            border-radius: 3px;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+            background: var(--link-color);
+            border-radius: 3px;
+            
+            &:hover {
+                background: var(--hover-color);
+            }
+        }
+    }
 } 

@@ -12,39 +12,41 @@
     <a href="/posts" class="back-to-posts">← Back to all posts</a>
 </div>
 
-<article class="post">
-    <header class="post-header">
-        <h1 class="post-title">{{ .Title }}</h1>
-        <div class="post-meta">
-            <time>{{ .Date.Format "Jan 2, 2006" }}</time>
-            {{ if .Site.Params.showReadingTime }}
-            <span class="reading-time">{{ .ReadingTime }} min read</span>
-            {{ end }}
+<div class="post-wrapper">
+    <article class="post">
+        <header class="post-header">
+            <h1 class="post-title">{{ .Title }}</h1>
+            <div class="post-meta">
+                <time>{{ .Date.Format "Jan 2, 2006" }}</time>
+                {{ if .Site.Params.showReadingTime }}
+                <span class="reading-time">{{ .ReadingTime }} min read</span>
+                {{ end }}
+            </div>
+        </header>
+
+        <div class="post-content">
+            {{ .Content }}
         </div>
-    </header>
+
+        {{ if .Site.Params.showPostNavigation }}
+        <nav class="post-navigation">
+            {{ with .PrevInSection }}
+            <a class="prev-post" href="{{ .RelPermalink }}">← {{ .Title }}</a>
+            {{ end }}
+            {{ with .NextInSection }}
+            <a class="next-post" href="{{ .RelPermalink }}">{{ .Title }} →</a>
+            {{ end }}
+        </nav>
+        {{ end }}
+    </article>
 
     {{ if .Site.Params.showToc }}
     {{ if .TableOfContents }}
-    <div class="table-of-contents">
+    <aside class="table-of-contents">
         <h2>Table of Contents</h2>
         {{ .TableOfContents }}
-    </div>
+    </aside>
     {{ end }}
     {{ end }}
-
-    <div class="post-content">
-        {{ .Content }}
-    </div>
-
-    {{ if .Site.Params.showPostNavigation }}
-    <nav class="post-navigation">
-        {{ with .PrevInSection }}
-        <a class="prev-post" href="{{ .RelPermalink }}">← {{ .Title }}</a>
-        {{ end }}
-        {{ with .NextInSection }}
-        <a class="next-post" href="{{ .RelPermalink }}">{{ .Title }} →</a>
-        {{ end }}
-    </nav>
-    {{ end }}
-</article>
+</div>
 {{ end }} 
