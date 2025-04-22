@@ -25,4 +25,8 @@ Thumbs.db
 .idea
 .vscode
 *.swp
-*.swo 
+*.swo
+
+# Research papers directories
+content/*/r.paper/
+**/r.paper/ 

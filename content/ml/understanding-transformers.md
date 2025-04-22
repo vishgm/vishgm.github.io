@@ -9,6 +9,25 @@ tags: ["deep-learning", "nlp", "transformers"]
 
 The transformer architecture has revolutionized natural language processing since its introduction in the "Attention Is All You Need" paper. Let's break down its key components.
 
+What is the paper trying to solve?
+
+What are the important concepts?
+
+In-depth overview of them (Tokenization / loss functions / reduce overfitting)
+
+Example
+
+
+
+
+The Transformer is a neural network architecture that **eliminates recurrence and convolutions** entirely, relying solely on a **self-attention mechanism** to model dependencies between input and output sequences.
+
+**Key Innovations:**
+
+- Uses **Self-Attention** to compute relationships between all positions in a sequence directly.
+- Achieves **parallelization** by removing sequential dependencies found in RNNs.
+- Efficiently scales for **long sequences**.
+
 ## Key Components
 
 ### 1. Self-Attention Mechanism
