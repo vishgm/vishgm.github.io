@@ -18,8 +18,6 @@ In-depth overview of them (Tokenization / loss functions / reduce overfitting)
 Example
 
 
-
-
 The Transformer is a neural network architecture that **eliminates recurrence and convolutions** entirely, relying solely on a **self-attention mechanism** to model dependencies between input and output sequences.
 
 **Key Innovations:**

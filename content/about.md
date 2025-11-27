@@ -4,9 +4,7 @@ date: 2024-02-15
 description: "Learn more about this blog and its author"
 ---
 
-## About Me
-
-I'm someone who loves to explore and share knowledge about:
+I am someone who loves to explore and share knowledge about:
 * Technology
 * Programming
 * Productivity

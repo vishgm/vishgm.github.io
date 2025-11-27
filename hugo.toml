@@ -2,6 +2,7 @@ baseURL = 'https://vishgm.github.io/'
 languageCode = 'en-us'
 title = 'Vishak Gopkumar'
 theme = 'awesome-custom'
+buildFuture = true  # This will allow future posts to be displayed
 
 # Enable dark/light mode
 [params]
@@ -20,7 +21,7 @@ theme = 'awesome-custom'
   # Your avatar URL
   avatar = "https://github.com/vishgm.png"
   # Main sections to include in lists
-  mainSections = ["posts", "ml", "system-design", "current-reads"]
+  mainSections = ["posts", "ml", "current-reads", "banking-domain"]
 
 [menu]
   [[menu.main]]

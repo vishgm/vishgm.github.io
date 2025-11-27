@@ -1,22 +1,24 @@
 {
   "main": {
-    "id": "f38033f24722fb8f",
+    "id": "d3c6b2882a6f1408",
     "type": "split",
     "children": [
       {
-        "id": "c3fce05193439cec",
+        "id": "6fd4e9d0620ffb69",
         "type": "tabs",
         "children": [
           {
-            "id": "f922d2e03038b80c",
+            "id": "979b1b8c2ade1290",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ml/understanding-transformers.md",
+                "file": "banking-domain/ml-usecases.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "ml-usecases"
             }
           }
         ]
@@ -25,25 +27,28 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "ddd82023f4e2bac0",
+    "id": "bbc0c6482b540414",
     "type": "split",
     "children": [
       {
-        "id": "925fa49de6589597",
+        "id": "2c5aba8936cd866f",
         "type": "tabs",
         "children": [
           {
-            "id": "80e7deed0de0f462",
+            "id": "0fc84b466b8ded65",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
-              }
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
-            "id": "0c83b7cf6574a4a7",
+            "id": "cc082548bc3a621b",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -54,38 +59,42 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
-            "id": "4f7bd2f3f9f2e797",
+            "id": "295028aaf728c760",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 247.5
   },
   "right": {
-    "id": "d9c67abc8ddeccaf",
+    "id": "1102cf93c5423dcd",
     "type": "split",
     "children": [
       {
-        "id": "f4d76ef8b326292e",
+        "id": "a72353d9da7791c6",
         "type": "tabs",
         "children": [
           {
-            "id": "0ad157d4491eb60f",
+            "id": "b291d48b29c4569a",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ml/understanding-transformers.md",
+                "file": "banking-domain/ml-usecases.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -93,40 +102,53 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for ml-usecases"
             }
           },
           {
-            "id": "8336f0c730ba5db1",
+            "id": "3b65bae9333cabe3",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ml/understanding-transformers.md",
+                "file": "banking-domain/ml-usecases.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from ml-usecases"
             }
           },
           {
-            "id": "50acfd585c81a52f",
+            "id": "9668834c4b3869b0",
             "type": "leaf",
             "state": {
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
-                "useHierarchy": true
-              }
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
-            "id": "89d0098923d16fc9",
+            "id": "7e7eb48e2d6f3914",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "ml/understanding-transformers.md"
-              }
+                "file": "banking-domain/ml-usecases.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of ml-usecases"
             }
           }
         ],
@@ -134,8 +156,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -147,25 +168,25 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "80e7deed0de0f462",
+  "active": "979b1b8c2ade1290",
   "lastOpenFiles": [
-    "current-reads/r.paper/README.md",
-    "statistics/r.paper/README.md",
-    "system-design/r.paper/README.md",
-    "ml/r.paper/README.md",
-    "system-design/r.paper",
-    "current-reads/r.paper",
-    "statistics/r.paper",
-    "ml/r.paper",
-    "ml/first-ml-post.md",
-    "ml/understanding-transformers.md",
+    "banking-domain/getting-started.md",
+    "banking-domain/ml-usecases.md",
     "about.md",
-    "Temp.md",
+    "current-reads/GenAI Tutorial.md",
+    "banking-domain/_index.md",
+    "2025-06-14.md",
+    "ml/understanding-transformers.md",
+    "statistics/_index.md",
     "posts/_index.md",
+    "ml/_index.md",
+    "current-reads/_index.md",
+    "current-reads/current-reading-list.md",
+    "statistics",
     "posts",
-    "ml/time_series_basics.md",
-    "ml/basic_statistics.md",
-    "notebooks/example_analysis.md",
-    "notebooks"
+    "ml",
+    "current-reads",
+    "banking-domain",
+    "Welcome.md"
   ]
 }
