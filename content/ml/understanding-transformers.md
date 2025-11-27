@@ -3,7 +3,7 @@ title: "Understanding Transformer Architecture"
 date: 2025-02-20
 description: "A deep dive into the transformer architecture, its components, and why it revolutionized NLP"
 readingTime: 8
-draft: false
+draft: true
 tags: ["deep-learning", "nlp", "transformers"]
 ---
 
